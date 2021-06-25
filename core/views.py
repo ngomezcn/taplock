@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.utils import IntegrityError
 from django.shortcuts import render
 
 # Create your views here.
@@ -18,10 +19,66 @@ from rest_framework.decorators import api_view
 from .models import UserProfile
 from django.contrib.auth import authenticate
 from core.serializers import UserSerializer
+from django.utils import timezone
 
-from django.db import IntegrityError
 
+import hashlib
 
+# Html email required stuff
+from django.core.mail import send_mail
+
+from django.core import mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from .models import emailVerification, UserProfile
+from django.core.exceptions import FieldDoesNotExist, ObjectDoesNotExist
+def activateAccount(request):
+    key = request.GET.get('key')
+    print("TOKEN", key)
+    
+    try:
+        verification = emailVerification.objects.get(token=key)
+        
+        user = UserProfile.objects.get(email=verification.email)
+       
+        user.email_verification = True
+        user.save()
+        
+        verification.delete()
+
+        return render(request, "email_success.html")
+        
+    except ObjectDoesNotExist as e:
+        return render(request, "error.html")
+        
+        if 'emailVerification matching query does not exist.' == e.args:
+            print("HHHHHH",e.args)      
+            return render(request, "error.html")
+            
+            
+
+    
+        
+    # http://172.10.10.10:8000/test/?key=HOLA
+
+class echoMail(APIView):
+  
+    def post(self, request, *args, **kwargs):
+        # send and email
+
+        subject = 'Subject'
+        html_message = render_to_string('mail_template.html', {'context': 'values'})
+        plain_message = strip_tags(html_message)
+        from_email = 'From <from@example.com>'
+        to = 'naimgomezcn@gmail.com'
+        mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+        
+        #send_mail(subject, html_message,from_email,[to])
+        
+        return Response("HOLA")
+
+from .models import emailVerification
+import hashlib
 class signUp(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
@@ -30,6 +87,7 @@ class signUp(APIView):
 
         if serializer.is_valid():
             try:
+                
                 UserProfile.objects.create_user(                
                 serializer.validated_data['email'],
                 serializer.validated_data['name'],
@@ -37,6 +95,18 @@ class signUp(APIView):
                 serializer.validated_data['password'],
                 )
                 
+                
+                random = str(timezone.now())+serializer.validated_data['name']+serializer.validated_data['phone']+serializer.validated_data['email']
+                hash_object = hashlib.sha1(random.encode("utf-8"))
+                token_validation = hash_object.hexdigest()
+
+                emailVerification.objects.create(email=serializer.validated_data['email'], token=token_validation)
+                send_mail("TOKEN", 
+                          "THIS IS YOUR LINK: http://172.10.10.10:8000/test/?key="+ token_validation + " USER" + serializer.validated_data['email'],
+                          "castelldeneim@gmail.com",
+                          [serializer.validated_data['email']])
+                           
+           
                 # Generate token and login user after SingUp
                 user = authenticate(username=serializer.validated_data['email'], password=serializer.validated_data['password'])
                 token, created = Token.objects.get_or_create(user=user)

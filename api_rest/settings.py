@@ -62,10 +62,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'api_rest.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS':[
+                os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,11 +130,26 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Email backend
+
+# EMAIL_HOST_USER = 
+# EMAIL_HOST_PASSWORD = "passw"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = True
+EMAIL_HOST_USER = "castelldeneim@gmail.com"
+EMAIL_HOST_PASSWORD = "19401940nAI"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

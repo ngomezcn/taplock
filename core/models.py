@@ -29,13 +29,19 @@ class UserProfileManager(BaseUserManager):
         return user
 
  
+class emailVerification(models.Model):
+    email = models.EmailField(max_length=32, unique=True)
+    token = models.CharField(max_length=255, default="null")
+ 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=245)
+    email = models.EmailField(max_length=32, unique=True)
+    name = models.CharField(max_length=32)
     phone = models.CharField(max_length=9, default="null")
     
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    
+    email_verification = models.BooleanField(default=False)
         
     objects = UserProfileManager()
         
