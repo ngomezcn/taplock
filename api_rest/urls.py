@@ -12,7 +12,7 @@ urlpatterns = [
     path('email/',  echoMail.as_view(),  name='echoMail'),
     path('test/', activateAccount),
     
-    # User Sesion Manager """
+    # User Sesion Manager 
     path('sign-in/',  signIn.as_view(),  name='signIn'),
     path('sign-up/',  signUp.as_view(),  name='signUp'),    
     path('sign-off/', signOff.as_view(), name='signOff'),

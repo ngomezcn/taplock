@@ -132,9 +132,6 @@ USE_TZ = True
 
 # Email backend
 
-# EMAIL_HOST_USER = 
-# EMAIL_HOST_PASSWORD = "passw"
-
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
@@ -147,9 +144,6 @@ EMAIL_HOST_PASSWORD = "19401940nAI"
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
