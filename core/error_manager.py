@@ -5,6 +5,8 @@ from django.utils import timezone
 from rest_framework import status
 
 '''
+To keep KIS we only can use those HTTP codes 
+
 200 - OK
 400 - Solicitud incorrecta (error del cliente): un json con error \ más detalles deben regresar al cliente.
 401 - No autorizado
@@ -46,7 +48,6 @@ class codes:
             If server have and undefined internal error we call this,             
             Returns a response in json format with useful information.  
         """                     
-        
         
         def internal_error(exception=None, status=status.HTTP_500_INTERNAL_SERVER_ERROR):    
             try:        

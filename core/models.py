@@ -28,7 +28,6 @@ class UserProfileManager(BaseUserManager):
         
         return user
 
- 
 class EmailVerification(models.Model):
     email = models.EmailField(max_length=32, default="-" )
     token = models.CharField(max_length=255, default="-")
@@ -37,7 +36,6 @@ class EmailVerification(models.Model):
     
     def __str__(self):
         return self.email
-
  
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """
@@ -70,6 +68,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """
     
     # TODO: Aceptar la protección de datos
+    # TODO: Notificar al cliente si hay info nueva que le interese.
     
     email = models.EmailField(max_length=32, unique=True)
     name = models.CharField(max_length=32)
