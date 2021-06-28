@@ -116,16 +116,14 @@ class codes:
 
     class signUp:
         
-        
         def undefined_error(exception=None, status=status.HTTP_400_BAD_REQUEST):
             try:
                 return {
                         "status" : str(status),
-                        "code" : "signUp-2001",
+                        "code" : "signUp-7000",
                         "timestamp": str(datetime.datetime.utcnow()),
                         "message" : "Error desconocido.",
                         "exception:": str(exception)}     
-                
             except Exception as e:
                 return codes.server.internal_error(e.args)
             
@@ -133,11 +131,10 @@ class codes:
             try:
                 return {                     
                         "status" : str(status),
-                        "code" : "signUp-2003",
+                        "code" : "signUp-7001",
                         "timestamp": str(datetime.datetime.utcnow()),
                         "message" : "El email introducido no tiene un formato correcto.",
                         "exception:": str(exception)}     
-                
             except Exception as e:
                 return codes.server.internal_error(e.args)
             
@@ -145,14 +142,37 @@ class codes:
             try:
                 return {                     
                         "status" : str(status),
-                        "code" : "signUp-2003",
+                        "code" : "signUp-7002",
                         "timestamp": str(datetime.datetime.utcnow()),
                         "message" : "Este usuario ya existe.",
-                        "exception:": str(exception)}     
-                
+                        "exception:": str(exception)}    
             except Exception as e:
                 return codes.server.internal_error(e.args)
-        
+            
+        def missing_parameter(exception, status=status.HTTP_400_BAD_REQUEST):
+                    try:
+                        return {                     
+                                "status" : str(status),
+                                "code" : "signUp-7004",
+                                "timestamp": str(datetime.datetime.utcnow()),
+                                "message" : "Faltan parametros para poder crear el usuario.",
+                                "exception:": str(exception)}     
+                        
+                    except Exception as e:
+                        return codes.server.internal_error(e.args)
+                    
+        def activation_email_sending_failed(exception=None, status=status.HTTP_400_BAD_REQUEST):
+                    try:
+                        return {                     
+                                "status" : str(status),
+                                "code" : "signUp-7004",
+                                "timestamp": str(datetime.datetime.utcnow()),
+                                "message" : "Ha ocurrido un error al enviar el email de activación.",
+                                "exception:": str(exception)}     
+                        
+                    except Exception as e:
+                        return codes.server.internal_error(e.args)
+                
             
         
 

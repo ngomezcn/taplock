@@ -85,25 +85,26 @@ class signUp(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
         
-        serializer.is_valid(raise_exception=True)        
-            
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
         
-            email    = serializer.validated_data['email']
-            name     = serializer.validated_data['name']
-            phone    = serializer.validated_data['phone']
-            password = serializer.validated_data['password']
+            try: 
+                email    = serializer.validated_data['email']
+                name     = serializer.validated_data['name']
+                phone    = serializer.validated_data['phone']
+                password = serializer.validated_data['password']
+            except Exception as e:
+                #TODO: Improve this
+                return Response(codes.signUp.missing_parameter(e.args),status.HTTP_400_BAD_REQUEST)
 
-            try:       
+            try: 
                 
-                
-                # Email validation
+                # Email validation handler                                                     
                 try:
                     validate_email(email)
                 except ValidationError as e:
                     return Response(codes.signUp.bad_email_format(e.args), status.HTTP_400_BAD_REQUEST)
                       
-                # User creation validation                              
+                # User creation handler                              
                 try:
                     
                     UserProfile.objects.create_user(  
@@ -112,26 +113,30 @@ class signUp(APIView):
                     phone    = phone,
                     password = password
                     )                                  
-                except Exception as e:
-                    return Response(codes.signUp.user_already_exist(e.args), status.HTTP_400_BAD_REQUEST)
+                except Exception as e:                    
+                    return Response(codes.signUp.user_already_exist(e.args), status.HTTP_400_BAD_REQUEST)                    
                     
-                    
-                # Send email verification
-                try:                
-                    
+                # Generate email token for verification
+                try:
                     # IDEA: If a the random string has not enough entropy we can use a hash.
                     # hash_input = str(datetime.datetime.utcnow()) + name + phone + email + password
                     # hash_input.encode("utf-8")                        
                     # hash_token = hashlib.sha1(hash_input).hexdigest()
                     # email_token = hash_token
                 
+                
                     email_token = get_random_string(length=50, allowed_chars='1234567890-QWERTYUIOPASDFGHJKLZXCVBNM')
                     
                     EmailVerification.objects.create(
                     email=email, 
-                    token=email_token
-                    )
-            
+                    token=email_token)
+                    
+                except Exception as e:
+                    return Response(codes.signUp.activation_email_sending_failed(e.args))
+
+                # Send email verification
+                try:                
+                                
                     link = "http://172.10.10.10:8000/test/?key=" + email_token                        
                     context = {
                         'link':  link,
@@ -154,14 +159,14 @@ class signUp(APIView):
                         'email': email,
                         'name':  name,    
                     })  
-                except:
+                except Exception as e:
                     #TODO: Improve this
-                    return("EMAIL FAILS")
-                    
+                    return Response("EMAIL FAILS", e.args)
                                       
-            except IntegrityError as e: 
-                return(codes.signUp.undefined_error(e.args), status.HTTP_400_BAD_REQUEST)                    
-                                              
+            except Exception as e: 
+                return Response(codes.signUp.undefined_error(e.args))  
+            
+                                                          
 
 class signIn(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
