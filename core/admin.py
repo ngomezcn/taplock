@@ -1,9 +1,21 @@
 from django.contrib import admin
-from .models import UserProfile, iTapActivation, iTap, emailVerification
+from django import forms
+from .models import UserProfile, iTapActivation, iTap, EmailVerification
 # Register your models here.
 
 
 #admin.site.register(UserProfile, ArduinoKey )
 
-myModels = [UserProfile, iTapActivation, iTap, emailVerification]  # iterable list
-admin.site.register(myModels)
+@admin.register(UserProfile)
+class UserProfileRegister(admin.ModelAdmin):
+    list_display = ("email", "name", "phone")
+    pass
+
+@admin.register(EmailVerification)
+class EmailVerificationRegister(admin.ModelAdmin):
+    list_display = ("email", "valid", "creation")
+    pass
+
+
+#myModels = [UserProfile, iTapActivation, iTap, EmailVerification]  # iterable list
+#admin.site.register(myModels)

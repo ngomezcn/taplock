@@ -1,8 +1,8 @@
+from datetime import datetime
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
-import datetime
 
 class UserProfileManager(BaseUserManager):
     
@@ -19,8 +19,8 @@ class UserProfileManager(BaseUserManager):
         
         return user
     
-    def create_superuser(self, email, name, password):
-        user = self.create_user(email, name, password)
+    def create_superuser(self, email, name, phone, password):
+        user = self.create_user(email=email, name=name, phone=phone, password=password)
         
         user.is_superuser = True
         user.is_staff = True
@@ -29,9 +29,11 @@ class UserProfileManager(BaseUserManager):
         return user
 
  
-class emailVerification(models.Model):
-    email = models.EmailField(max_length=32)
-    token = models.CharField(max_length=255, default="null")
+class EmailVerification(models.Model):
+    email = models.EmailField(max_length=32, default="-" )
+    token = models.CharField(max_length=255, default="-")
+    creation = models.DateTimeField(max_length=255, verbose_name="Datetime creation", default=datetime.now)
+    valid = models.BooleanField(default=True,   verbose_name="Token status")
     
     def __str__(self):
         return self.email
@@ -66,10 +68,14 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     says(sound=None)
         Prints the animals name and what sound it makes
     """
+    
+    # TODO: Aceptar la protección de datos
+    
     email = models.EmailField(max_length=32, unique=True)
     name = models.CharField(max_length=32)
     phone = models.CharField(max_length=9, default="null")
-    
+    creation = models.DateTimeField(default=datetime.now)
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     
@@ -98,8 +104,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 '''
 
 class iTap(models.Model):
-    name = models.CharField(max_length=32)
-    activation_date = models.DateField(timezone.now())
+    name = models.CharField(max_length=32)     
+    creation = models.DateTimeField(default=timezone.now)
     
     slots = models.IntegerField(default=5)
     

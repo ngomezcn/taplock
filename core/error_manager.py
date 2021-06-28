@@ -1,4 +1,5 @@
 import datetime
+from django.utils import timezone
 
 # Rest Framework 
 from rest_framework import status
@@ -9,7 +10,7 @@ from rest_framework import status
 401 - No autorizado
 500 - Error interno del servidor: un json con un error debe regresar al cliente solo cuando no hay riesgo de seguridad al hacerlo.
 '''
-
+# If ALL fails it will save us ;)
 INTERNAL_SERVER_ERROR = "internal_error(exception=None) -> Failed  "
 
 class codes:
@@ -20,6 +21,18 @@ class codes:
     TODO: Make a log system to save all data on the disk
     
     """
+
+    def serializer_error(exception, status=status.HTTP_500_INTERNAL_SERVER_ERROR):
+            try:
+                return {
+                        "status" : str(status),
+                        "code" : "internal-2000",
+                        "timestamp":str(datetime.datetime.utcnow()),
+                        "message" : "Error de serializador",
+                        "exception:": str(exception)}     
+                
+            except Exception as e:
+                return codes.server.internal_error(e.args)
   
     class server:   
         """
@@ -102,6 +115,8 @@ class codes:
                 return codes.server.internal_error(e.args)
 
     class signUp:
+        
+        
         def undefined_error(exception=None, status=status.HTTP_400_BAD_REQUEST):
             try:
                 return {
@@ -121,6 +136,18 @@ class codes:
                         "code" : "signUp-2003",
                         "timestamp": str(datetime.datetime.utcnow()),
                         "message" : "El email introducido no tiene un formato correcto.",
+                        "exception:": str(exception)}     
+                
+            except Exception as e:
+                return codes.server.internal_error(e.args)
+            
+        def user_already_exist(exception=None, status=status.HTTP_400_BAD_REQUEST):
+            try:
+                return {                     
+                        "status" : str(status),
+                        "code" : "signUp-2003",
+                        "timestamp": str(datetime.datetime.utcnow()),
+                        "message" : "Este usuario ya existe.",
                         "exception:": str(exception)}     
                 
             except Exception as e:

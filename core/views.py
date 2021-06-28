@@ -1,40 +1,40 @@
-from datetime import date
-from django.contrib.auth.models import User
-from django.db.utils import Error, IntegrityError
-from django.shortcuts import render
-import argparse
-import datetime
 
-# Create your views here.
+# Django
+from django.core.exceptions import *
+from django.core.mail import send_mail
+from django.core import mail
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django.db.utils import Error, IntegrityError
+from django.utils.html import strip_tags
+from django.utils.crypto import get_random_string
+from django.contrib.auth import authenticate
+from django.shortcuts import render
+from django.template.loader import render_to_string
+
+# Django Rest Framework
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.views import APIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
-from .models import UserProfile
-from django.contrib.auth import authenticate
-from core.serializers import UserSerializer
-from django.utils import timezone
-from .models import emailVerification
+
+# Python Modules
+import datetime
 import hashlib
 
-import hashlib
-
-from django.core.mail import send_mail
-
-from django.core import mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from .models import emailVerification, UserProfile
-from django.core.exceptions import FieldDoesNotExist, ObjectDoesNotExist
+# Custom Modules
+from .models import EmailVerification, UserProfile, UserProfile
+from .serializers import UserSerializer
+from .error_manager import codes
 
 
 def activateAccount(request):
@@ -42,7 +42,7 @@ def activateAccount(request):
     print("TOKEN", key)
     
     try:
-        verification = emailVerification.objects.get(token=key)
+        verification = EmailVerification.objects.get(token=key)
         
         user = UserProfile.objects.get(email=verification.email)
        
@@ -56,7 +56,7 @@ def activateAccount(request):
     except ObjectDoesNotExist as e: # If user doesn't exist.
         return render(request, "error.html")
         
-        if 'emailVerification matching query does not exist.' == e.args:
+        if 'EmailVerification matching query does not exist.' == e.args:
             print("HHHHHH",e.args)      
             return render(request, "error.html")
             
@@ -78,84 +78,90 @@ class echoMail(APIView):
         
         return Response("HOLA")
 
-from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
-from .error_manager import codes
-
-value = "foo.bar@baz.qux"
 
 
-import random
 ''' Sign Up API View'''
 class signUp(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
         
-        serializer.is_valid(raise_exception=True)
-                
-        email    = serializer.validated_data['email']
-        name     = serializer.validated_data['name']
-        phone    = serializer.validated_data['phone']
-        password = serializer.validated_data['password']
-
-        try:
-            validate_email(email)
-        except ValidationError as e:
-            return Response(codes.signUp.bad_email_format(e.args), status.HTTP_400_BAD_REQUEST)
-        else:
-            print("good email")        
+        serializer.is_valid(raise_exception=True)        
+            
+        if serializer.is_valid():
         
-            if serializer.is_valid():
+            email    = serializer.validated_data['email']
+            name     = serializer.validated_data['name']
+            phone    = serializer.validated_data['phone']
+            password = serializer.validated_data['password']
+
+            try:       
+                
+                
+                # Email validation
+                try:
+                    validate_email(email)
+                except ValidationError as e:
+                    return Response(codes.signUp.bad_email_format(e.args), status.HTTP_400_BAD_REQUEST)
+                      
+                # User creation validation                              
                 try:
                     
                     UserProfile.objects.create_user(  
                     email    = email, 
                     name     = name, 
                     phone    = phone,
-                    password = password)                
-                    
-                    random = str(datetime.datetime.utcnow())+serializer.validated_data['name']+serializer.validated_data['phone']+serializer.validated_data['email']
-                    hash_object = hashlib.sha1(random.encode("utf-8"))
-                    token_validation = hash_object.hexdigest()
-
+                    password = password
+                    )                                  
+                except Exception as e:
+                    return Response(codes.signUp.user_already_exist(e.args), status.HTTP_400_BAD_REQUEST)
                     
                     
+                # Send email verification
+                try:                
                     
-                    emailVerification.objects.create(email=serializer.validated_data['email'], token=token_validation)
-                    send_mail(
-                            "TapLock - Enlace de activación", 
-                            "THIS IS YOUR LINK: http://172.10.10.10:8000/test/?key="+ token_validation,
-                            "castelldeneim@gmail.com",
-                            [email])
-                            
+                    # IDEA: If a the random string has not enough entropy we can use a hash.
+                    # hash_input = str(datetime.datetime.utcnow()) + name + phone + email + password
+                    # hash_input.encode("utf-8")                        
+                    # hash_token = hashlib.sha1(hash_input).hexdigest()
+                    # email_token = hash_token
+                
+                    email_token = get_random_string(length=50, allowed_chars='1234567890-QWERTYUIOPASDFGHJKLZXCVBNM')
+                    
+                    EmailVerification.objects.create(
+                    email=email, 
+                    token=email_token
+                    )
             
-                    user = authenticate(username=serializer.validated_data['email'], password=password)
-                    token, created = Token.objects.get_or_create(user=user)
+                    link = "http://172.10.10.10:8000/test/?key=" + email_token                        
+                    context = {
+                        'link':  link,
+                        'name':  name,
+                        'email': email
+                    }
+                    
+                    subject = 'TapLock Admin - Activación'
+                    html_message = render_to_string('mail_template.html', context)
+                    plain_message = strip_tags(html_message)
+                    from_email = 'cliente@taplock.es'
+                    to = email
+                    mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+                                                
+                    #user = authenticate(username=serializer.validated_data['email'], password=password)
+                    #token, created = Token.objects.get_or_create(user=user)
                     
                     return Response({               
-                        'token': token.key,
+                        'message': "Se ha enviado el correo de activación",
                         'email': email,
-                        'name': name,    
-                        'password': password,                   
-                    })
+                        'name':  name,    
+                    })  
+                except:
+                    #TODO: Improve this
+                    return("EMAIL FAILS")
                     
-            
-                except IntegrityError as e: 
-                    print("ERRROR", e.args)
-
-                    if 'UNIQUE constraint failed: core_userprofile.email' in e.args:
-                        return Response({
-                            'exception': "Este usuario ya existe.",                        
-                        })
-                    else:
-                        return Response({
-                            'exception': "Ha ocurrido un error indefinido.",                        
-                        })                    
-            else:
-                return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
+                                      
+            except IntegrityError as e: 
+                return(codes.signUp.undefined_error(e.args), status.HTTP_400_BAD_REQUEST)                    
+                                              
 
 class signIn(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
@@ -193,9 +199,7 @@ class signIn(ObtainAuthToken):
             return Response(codes.signIn.undefined_error(e.args))      
 
             
-            
-
-
+        
 class signOff(APIView):
     def get(self, request, format=None):
 
