@@ -31,29 +31,28 @@ from .error_manager import codes
 
 def activateAccount(request):
     key = request.GET.get('key')
-    print("TOKEN", key)
     
     # ASK: Is useful login user after activate account?    
-    
+
     try:
         verification = EmailVerification.objects.get(token=key)
         
-        user = UserProfile.objects.get(email=verification.email)
-       
-        user.email_verification = True
-        user.save()
+        if verification.valid:            
+            user = UserProfile.objects.get(email=verification.email)
         
-        verification.delete()
-
-        return render(request, "email_success.html")
-        
-    except ObjectDoesNotExist as e: # If user doesn't exist.
-        return render(request, "error.html")
-        
-        if 'EmailVerification matching query does not exist.' == e.args:
-            print("HHHHHH",e.args)      
-            return render(request, "error.html")
+            user.email_verification = True
+            user.save()
             
+            verification.valid = False
+            verification.save()
+            
+            return render(request, "email_success.html")
+        else:
+            return render(request, "error.html")
+        
+    except Exception as e: # If user doesn't exist.
+        return render(request, "404.html")
+             
 ''' Sign Up API View'''
 class signUp(APIView):
     def post(self, request, *args, **kwargs):
@@ -140,41 +139,62 @@ class signUp(APIView):
                                       
             except Exception as e: 
                 return Response(codes.signUp.undefined_error(e.args))  
+        else:
+            return Response(codes.server.serializer_error())  
                                                                     
 class signIn(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         
         serializer = UserSerializer(data=request.data)        
-        serializer.is_valid(raise_exception=True)
-        
-        user = authenticate(username=serializer.validated_data['email'], password=serializer.validated_data['password'])
-        
-        print(request)
-        print(request.data)
-
-        try:
-            if user is not None:           
-                if user.email_verification == False:
-                    return Response(
-                        codes.signIn.pending_email_verification(status=status.HTTP_400_BAD_REQUEST), status=status.HTTP_400_BAD_REQUEST)      
-
-                else:                    
-                    token, created = Token.objects.get_or_create(user=user)
+               
+        if serializer.is_valid(raise_exception=True):
+            
+            email = serializer.validated_data['email']
+            password = serializer.validated_data['password'] 
+            
+            try:
+                validate_email(email)
+            except ValidationError as e: # Input email has bad format.
+                return Response(codes.signIn.bad_email_format(e.args), status.HTTP_400_BAD_REQUEST)             
+                    
+            try:  
+                user = UserProfile.objects.get(email=email)                
+            except Exception as e: # User is has no account   
+                return Response(codes.signIn.user_does_not_exist(e.args), status.HTTP_400_BAD_REQUEST)             
+            
+            user = authenticate(username=email, password=password)
+            try:
+                if user is not None:           
+                    if user.email_verification:                        
                         
-                    return Response({
-                        'token': token.key,
-                        'user_id': user.pk,
-                        'email': user.email,
-                        'active': user.is_active,
-                        'name': user.name,
-                        'email_verification': user.email_verification,
-                    })
-            else:
-                return Response(codes.signIn.wrong_credentials())      
+                        token, created = Token.objects.get_or_create(user=user)                            
+                        return Response({
+                            'token': token.key,
+                            'user_id': user.pk,
+                            'email': user.email,
+                            'active': user.is_active,
+                            'name': user.name,
+                            'email_verification': user.email_verification,
+                        })
+            
+                    else: # User has to veritifcate the email account
+                        return Response(
+                            codes.signIn.pending_email_verification(status=status.HTTP_400_BAD_REQUEST), status=status.HTTP_400_BAD_REQUEST)                                      
+                        
+                else: # Client bad login credentials 
+                    return Response(codes.signIn.wrong_credentials())      
+                
+            except Exception as e: # Catch unknown exception 
+                return Response(codes.signIn.undefined_error(e.args))      
 
-        except Exception as e:            
-            return Response(codes.signIn.undefined_error(e.args))      
+        else: # Serializer is not valid
+            return Response(codes.server.serializer_error())  
         
+
+
+
+
+'''        
 class signOff(APIView):
     def get(self, request, format=None):
 
@@ -193,7 +213,7 @@ class signOff(APIView):
                     return Response({
                         'exception': "Ha ocurrido un error indefinido.",                        
                     }, status=status.HTTP_400_BAD_REQUEST)
-       
+'''    
           
 '''
 TEST 

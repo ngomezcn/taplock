@@ -24,17 +24,7 @@ class codes:
     
     """
 
-    def serializer_error(exception, status=status.HTTP_500_INTERNAL_SERVER_ERROR):
-            try:
-                return {
-                        "status" : str(status),
-                        "code" : "internal-2000",
-                        "timestamp":str(datetime.datetime.utcnow()),
-                        "message" : "Error de serializador",
-                        "exception:": str(exception)}     
-                
-            except Exception as e:
-                return codes.server.internal_error(e.args)
+    
   
     class server:   
         """
@@ -61,6 +51,18 @@ class codes:
                 return context
             except Exception as e:
                 return {INTERNAL_SERVER_ERROR}
+            
+        def serializer_error(exception=None, status=status.HTTP_500_INTERNAL_SERVER_ERROR):
+            try:
+                return {
+                        "status" : str(status),
+                        "code" : "internal-2000",
+                        "timestamp":str(datetime.datetime.utcnow()),
+                        "message" : "Error de serializador",
+                        "exception:": str(exception)}     
+                
+            except Exception as e:
+                return codes.server.internal_error(e.args)
               
             
     class signIn:      
@@ -112,6 +114,28 @@ class codes:
                         "message" : "Debe activar su cuenta mediante el enlace de email",
                         "exception:": str(exception)}     
                 
+            except Exception as e:
+                return codes.server.internal_error(e.args)
+            
+        def bad_email_format(exception=None, status=status.HTTP_400_BAD_REQUEST):
+            try:
+                return {                     
+                        "status" : str(status),
+                        "code" : "signIn-2004",
+                        "timestamp": str(datetime.datetime.utcnow()),
+                        "message" : "El email introducido no tiene un formato correcto.",
+                        "exception:": str(exception)}     
+            except Exception as e:
+                return codes.server.internal_error(e.args)
+            
+        def user_does_not_exist(exception=None, status=status.HTTP_400_BAD_REQUEST):
+            try:
+                return {                     
+                        "status" : str(status),
+                        "code" : "signIn-2005",
+                        "timestamp": str(datetime.datetime.utcnow()),
+                        "message" : "La cuenta indicada no existe.",
+                        "exception:": str(exception)}     
             except Exception as e:
                 return codes.server.internal_error(e.args)
 
