@@ -2,53 +2,68 @@
 
 # 3 "d:\\TapLock\\arduino\\main.ino" 2
 # 4 "d:\\TapLock\\arduino\\main.ino" 2
+# 5 "d:\\TapLock\\arduino\\main.ino" 2
 
 
-
-
-
-SoftwareSerial miBT(5, 6); // pin 10 como RX, pin 11 como TX
-
-
-
-
-void startAT(SoftwareSerial BT)
-{
-  digitalWrite(8, 0x0);
-  delay(500);
-  digitalWrite(7, 0x1);
-  delay(500);
-  digitalWrite(8, 0x1);
-  delay(2000);
-  BT.println("AT+VERSION?\n");
-}
-
-void stopAT(SoftwareSerial BT)
-{
-  digitalWrite(7, 0x0);
-  delay(500);
-  BT.println("AT+RESET\n");
-}
+// HC-05 Bluetooth
+SoftwareSerial miBT(5, 6);
+char incomingByte;
 
 void setup(){
   Serial.begin(9600);
   miBT.begin(38400);
+
+
   pinMode(7, 0x1);
   pinMode(8, 0x1);
-
-  startAT(miBT);
-  //delay(5000);
-  //stopAT(miBT);
+  pinMode(13, 0x1);
+  //digitalWrite(BT_POWER, HIGH);  
+  Serial.println("Listo");
 }
 
 void loop(){
-    if (miBT.available())
+
+  //  while (Serial.available() == 0);
+
+  /*if (Serial.available() > 0) {
+
+    // read the incoming byte:
+
+    incomingByte = Serial.read();
+
+
+
+    if(incomingByte == '1')
+
     {
-        Serial.write(miBT.read());
+
+      Serial.println("UNO");
+
+      bluetooth::stop_AT_mode(miBT);
+
     }
 
-    if (Serial.available())
+    if(incomingByte == '2')
+
     {
-        miBT.write(Serial.read());
+
+      Serial.println("DOS");
+
+      bluetooth::start_AT_mode(miBT);
+
     }
+
+
+
+    //Serial.print("I received: ");
+
+   // Serial.println(incomingByte);
+
+  }*/
+# 45 "d:\\TapLock\\arduino\\main.ino"
+  get_serial_string(miBT);
+  if (miBT.available())
+  {
+    Serial.write(miBT.read());
+  }
 }

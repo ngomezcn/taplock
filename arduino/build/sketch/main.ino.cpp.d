@@ -13,4 +13,6 @@ d:\TapLock\arduino\build\sketch\main.ino.cpp.o: \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src/SoftwareSerial.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
- d:\TapLock\arduino\build\sketch\utils/bluetooth.h
+ d:\TapLock\arduino\build\sketch\utils/bluetooth.h \
+ d:\TapLock\arduino\build\sketch\utils/config.cpp \
+ d:\TapLock\arduino\build\sketch\utils/commands.h

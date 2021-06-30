@@ -1,3 +1,4 @@
+#line 1 "d:\\TapLock\\arduino\\utils\\config.cpp"
 #pragma once
 
 /* 

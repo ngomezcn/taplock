@@ -16,8 +16,8 @@
 SoftwareSerial miBT(5, 5); 	// pin 10 como RX, pin 11 como TX
 void setup(){
   Serial.begin(9600);		
-  Serial.println("Listo");
   miBT.begin(38400);		
+  Serial.println("Listo");
 }
 
 void loop(){
