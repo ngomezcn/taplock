@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".verification_code"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    tools:context=".sign_in">
 
     <TextView
-        android:layout_width="433dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/inter_bold"
@@ -17,19 +16,17 @@
         android:gravity="center_horizontal"
         android:letterSpacing="0.02"
         android:lineHeight="32sp"
-        android:paddingTop="120dp"
-        android:text="Código de verificación"
+        android:paddingTop="50dp"
+        android:text="¡Crear cuenta!"
 
         android:textAlignment="center"
-        android:textColor="#3E5481"
+        android:textColor="#2E3E5C"
         android:textFontWeight="700"
-        android:textSize="27sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
-        android:paddingRight="50dp"
-        android:paddingLeft="50dp"
-        android:paddingTop="10dp"
+        android:paddingTop="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -40,109 +37,170 @@
         android:lineHeight="25sp"
         android:paddingBottom="32dp"
 
-        android:text="Hemos enviado el código a su correo electrónico"
+        android:text="Ingrese los datos requeridos aquí."
         android:textAlignment="center"
         android:textColor="#9FA5C0"
         android:textFontWeight="600"
-        android:textSize="17dp"
+        android:textSize="16dp"
         android:textStyle="bold" />
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/full_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingBottom="15dp"
-        android:paddingTop="0dp">
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
 
-        <EditText
-            android:id="@+id/num_0"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/verfication_digits"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="10sp"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:inputType="textPersonName"
 
-            android:hint=""
-            android:textColor="@color/black"
-            android:fontFamily="@font/inter_medium"
-            android:textSize="34dp"
-            android:lineHeight="41dp"
-            android:textFontWeight="600"
-            android:maxLength="1"
-            android:inputType = "number"
+        android:lineHeight="18sp"
+        android:textFontWeight="500"
+        android:textSize="15sp"
 
-            android:gravity="center">
-        </EditText>
+        android:hint="Nombre completo"
+        android:textColor="#9FA5C0"/>
 
-        <View
-            android:layout_width="13dp"
-            android:layout_height="1dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white"/>
 
-        <EditText
-            android:id="@+id/num_1"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/verfication_digits"
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
 
-            android:hint=""
-            android:textColor="@color/black"
-            android:fontFamily="@font/inter_medium"
-            android:textSize="34dp"
-            android:lineHeight="41dp"
-            android:textFontWeight="600"
-            android:maxLength="1"
-            android:inputType = "number"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_smartphone"
+        android:drawablePadding="10sp"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:inputType="textPersonName"
 
-            android:gravity="center">
-        </EditText>
+        android:lineHeight="18sp"
+        android:textFontWeight="500"
+        android:textSize="15sp"
 
-        <View
-            android:layout_width="13dp"
-            android:layout_height="1dp"/>
+        android:hint="Número de telefono"
+        android:textColor="#9FA5C0"/>
 
-        <EditText
-            android:id="@+id/num_2"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/verfication_digits"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white"/>
 
-            android:hint=""
-            android:textColor="@color/black"
-            android:fontFamily="@font/inter_medium"
-            android:textSize="34dp"
-            android:lineHeight="41dp"
-            android:textFontWeight="600"
-            android:maxLength="1"
-            android:inputType = "number"
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
 
-            android:gravity="center">
-        </EditText>
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_message"
+        android:drawableLeft="@drawable/ic_message"
+        android:drawablePadding="10sp"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:inputType="textPersonName"
 
-        <View
-            android:layout_width="13dp"
-            android:layout_height="1dp"/>
+        android:lineHeight="18sp"
+        android:textFontWeight="500"
+        android:textSize="15sp"
 
-        <EditText
-            android:id="@+id/num_3"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/verfication_digits"
+        android:hint="Email"
+        android:textColor="#9FA5C0"/>
 
-            android:hint=""
-            android:textColor="@color/black"
-            android:fontFamily="@font/inter_medium"
-            android:textSize="34dp"
-            android:lineHeight="41dp"
-            android:textFontWeight="600"
-            android:maxLength="1"
-            android:inputType = "number"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white"/>
 
-            android:gravity="center">
-        </EditText>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@drawable/ic_lock"
+        android:drawablePadding="10sp"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:inputType="textPersonName"
+        android:lineHeight="18sp"
+        android:textFontWeight="500"
+        android:textSize="15sp"
+        android:hint="Contraseña"
+        android:textColor="#9FA5C0"
+        android:drawableRight="@drawable/ic_pwd_visibility"
+        />
 
-        <View
-            android:layout_width="13dp"
-            android:layout_height="1dp"/>
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white"/>
+
+    <EditText
+        android:id="@+id/password_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@drawable/ic_lock"
+        android:drawablePadding="10sp"
+        android:ems="10"
+        android:fontFamily="@font/inter"
+        android:inputType="textPersonName"
+
+        android:lineHeight="18sp"
+        android:textFontWeight="500"
+        android:textSize="15sp"
+
+        android:hint="Repita la contraseña"
+        android:textColor="#9FA5C0"
+        android:drawableRight="@drawable/ic_pwd_visibility"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@android:color/white"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24sp"
+        android:textStyle="bold"
+        android:text="Acepto los Términos del Servicio y la Politica de Privacidad."
+        android:padding="5dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@android:color/white"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:text="Finalizar"
+        android:textColor="@color/white"
+        android:background="@drawable/sign_in_btn"/>
+
+    <!--android:backgroundTint="#1FCC79"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +219,7 @@
             android:letterSpacing="0.02"
             android:lineHeight="25sp"
 
-            android:text="el código expira en"
+            android:text="¿Ya tienes cuenta?"
             android:textAlignment="center"
             android:textColor="#2E3E5C"
             android:textFontWeight="600"
@@ -179,48 +237,13 @@
             android:letterSpacing="0.04"
             android:lineHeight="25sp"
 
-            android:text="5 minutos"
+            android:text="Iniciar Sesión"
             android:textAlignment="center"
-            android:textColor="#FF6464"
+            android:textColor="#1FCC79"
             android:textFontWeight="600"
             android:textSize="15dp"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24sp"
-        android:layout_marginRight="24sp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-
-        android:text="Verificar"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:fontFamily="@font/inter_bold"
-        android:letterSpacing="0.06"
-        android:textAllCaps="false"
-
-        android:background="@drawable/sign_in_btn"/>
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24sp"
-        android:layout_marginRight="24sp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-
-        android:text="Enviar de nuevo"
-        android:textColor="@color/textGray"
-        android:textStyle="bold"
-        android:fontFamily="@font/inter_bold"
-        android:letterSpacing="0.06"
-        android:textAllCaps="false"
-
-        android:background="@drawable/re_send_pin"/>
-
-
-
-
 </LinearLayout>
+

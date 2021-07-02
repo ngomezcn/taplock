@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sapo">
-        <activity android:name=".verification_code"></activity>
+        <activity android:name=".politica_de_privacidad"></activity>
+        <activity android:name=".terminos_y_condiciones" />
+        <activity android:name=".sign_up" />
+        <activity android:name=".verification_code" />
         <activity android:name=".sign_in" />
         <activity android:name=".MainActivity">
             <intent-filter>

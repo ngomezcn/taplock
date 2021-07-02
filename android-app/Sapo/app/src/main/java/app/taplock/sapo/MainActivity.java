@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, verification_code.class);
+        Intent intent = new Intent(this, politica_de_privacidad.class);
         startActivity(intent);
     }
 }

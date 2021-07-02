@@ -25,24 +25,16 @@ public class sign_in extends AppCompatActivity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Toast.makeText(getApplicationContext(), "text",Toast.LENGTH_SHORT);
         final int DRAWABLE_RIGHT = 2;
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            Toast.makeText(getApplicationContext(), "text2",Toast.LENGTH_SHORT);
 
             if (event.getRawX() >= (old_pwd.getRight() - old_pwd.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                 if (old_pwd.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
-                    Toast.makeText(getApplicationContext(), "text5",Toast.LENGTH_LONG);
-
-                   // old_pwd.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_lock), null);
-
 
                     old_pwd.setInputType(InputType.TYPE_CLASS_TEXT |                           InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     old_pwd.setCompoundDrawablesWithIntrinsicBounds(getApplicationContext().getResources().getDrawable(R.drawable.ic_lock), null, getApplicationContext().getResources().getDrawable(R.drawable.ic_pwd_visibility_off), null);
                     old_pwd.setSelection(old_pwd.getText().length());
                 } else {
-                    Toast.makeText(getApplicationContext(), "text7",Toast.LENGTH_LONG);
-                    //old_pwd.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_lock), null);
 
                     old_pwd.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     old_pwd.setCompoundDrawablesWithIntrinsicBounds(getApplicationContext().getResources().getDrawable(R.drawable.ic_lock), null, getApplicationContext().getResources().getDrawable(R.drawable.ic_pwd_visibility), null);
