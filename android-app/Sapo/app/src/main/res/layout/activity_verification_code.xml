@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".verification_code"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="433dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/inter_bold"
+
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.02"
+        android:lineHeight="32sp"
+        android:paddingTop="120dp"
+        android:text="Código de verificación"
+
+        android:textAlignment="center"
+        android:textColor="#3E5481"
+        android:textFontWeight="700"
+        android:textSize="27sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:fontFamily="@font/inter"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.02"
+        android:lineHeight="25sp"
+        android:paddingBottom="32dp"
+
+        android:text="Hemos enviado el código a su correo electrónico"
+        android:textAlignment="center"
+        android:textColor="#9FA5C0"
+        android:textFontWeight="600"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:paddingTop="0dp">
+
+        <EditText
+            android:id="@+id/num_0"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/verfication_digits"
+
+            android:hint=""
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="34dp"
+            android:lineHeight="41dp"
+            android:textFontWeight="600"
+            android:maxLength="1"
+            android:inputType = "number"
+
+            android:gravity="center">
+        </EditText>
+
+        <View
+            android:layout_width="13dp"
+            android:layout_height="1dp"/>
+
+        <EditText
+            android:id="@+id/num_1"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/verfication_digits"
+
+            android:hint=""
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="34dp"
+            android:lineHeight="41dp"
+            android:textFontWeight="600"
+            android:maxLength="1"
+            android:inputType = "number"
+
+            android:gravity="center">
+        </EditText>
+
+        <View
+            android:layout_width="13dp"
+            android:layout_height="1dp"/>
+
+        <EditText
+            android:id="@+id/num_2"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/verfication_digits"
+
+            android:hint=""
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="34dp"
+            android:lineHeight="41dp"
+            android:textFontWeight="600"
+            android:maxLength="1"
+            android:inputType = "number"
+
+            android:gravity="center">
+        </EditText>
+
+        <View
+            android:layout_width="13dp"
+            android:layout_height="1dp"/>
+
+        <EditText
+            android:id="@+id/num_3"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/verfication_digits"
+
+            android:hint=""
+            android:textColor="@color/black"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="34dp"
+            android:lineHeight="41dp"
+            android:textFontWeight="600"
+            android:maxLength="1"
+            android:inputType = "number"
+
+            android:gravity="center">
+        </EditText>
+
+        <View
+            android:layout_width="13dp"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+
+            android:text="el código expira en"
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:paddingRight="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.04"
+            android:lineHeight="25sp"
+
+            android:text="5 minutos"
+            android:textAlignment="center"
+            android:textColor="#FF6464"
+            android:textFontWeight="600"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:text="Verificar"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter_bold"
+        android:letterSpacing="0.06"
+        android:textAllCaps="false"
+
+        android:background="@drawable/sign_in_btn"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:text="Enviar de nuevo"
+        android:textColor="@color/textGray"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter_bold"
+        android:letterSpacing="0.06"
+        android:textAllCaps="false"
+
+        android:background="@drawable/re_send_pin"/>
+
+
+
+
+</LinearLayout>
