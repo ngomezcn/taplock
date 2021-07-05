@@ -5,12 +5,16 @@
         android:icon="@drawable/ic_home"
         android:title="Inicio"/>
 
-    <item android:id="@+id/search"
+    <item android:id="@+id/notification"
         android:icon="@drawable/ic_notification"
-        android:title="Notificaciónes"/>
+        android:title="Alertas"/>
 
-    <item android:id="@+id/fav"
+    <item android:id="@+id/profile"
         android:icon="@drawable/ic_person"
         android:title="Perfil"/>
+
+    <item android:id="@+id/help"
+        android:icon="@drawable/ic_help"
+        android:title="Ayuda"/>
 
 </menu>

@@ -2,35 +2,70 @@ package app.taplock.sapo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
 public class menu extends AppCompatActivity {
-
-    BottomNavigationView bottomBar;
+    BottomNavigationView btnNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        bottomBar=findViewById(R.id.bottomBar);
-
-        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-
-                return false;
-            }
-        });
+        btnNav = findViewById(R.id.bottom_navigation);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_layout,new HomeFragment()).commit();
 
 
-        
+        BadgeDrawable badge_notifications = btnNav.getOrCreateBadge(R.id.notification);
+
+        badge_notifications.setBackgroundColor(Color.RED);
+        badge_notifications.setBadgeTextColor(Color.YELLOW);
+        badge_notifications.setMaxCharacterCount(3);
+        badge_notifications.setNumber(3);
+        badge_notifications.setVisible(true);
+
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new
+            BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()){
+                case R.id.home:
+                    selectedFragment = new HomeFragment();
+                    break;
+
+                case R.id.profile:
+                    selectedFragment = new ProfileFragment();
+                    break;
+
+                case R.id.notification:
+                    selectedFragment = new NotificationsFragment();
+                    btnNav.getOrCreateBadge(R.id.notification).clearNumber();
+                    btnNav.getOrCreateBadge(R.id.notification).setVisible(false);
+                    break;
+
+                case R.id.help:
+                    selectedFragment = new HelpFragment();
+                    break;
+            }
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_layout
+                    ,selectedFragment).commit();
+
+            return true;
+        }
+    };
 }
