@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.taplock.sapo">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="app.taplock.taplockadmin">
 
     <application
         android:allowBackup="true"
@@ -10,12 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Sapo">
-        <activity android:name=".menu"></activity>
-        <activity android:name=".politica_de_privacidad" />
-        <activity android:name=".terminos_y_condiciones" />
-        <activity android:name=".sign_up" />
-        <activity android:name=".sign_in" />
+        android:theme="@style/Theme.TapLockAdmin">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
