@@ -8,6 +8,9 @@
 SoftwareSerial miBT(BT_RX, BT_TX);  
 char incomingByte;
 
+// Unsigned Int 16 bytes: Max 65535
+uint_fast16_t test = 140;
+
 void setup(){
   Serial.begin(9600);   
   miBT.begin(38400);     

@@ -11,11 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sapo">
-        <activity android:name=".menu"></activity>
+        <activity android:name=".emailverification.EmailVerification"></activity>
+        <activity android:name=".add_itap.StepTwo" />
+        <activity android:name=".add_itap.AddItap" />
+        <activity
+            android:name=".menu.Menu"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".politica_de_privacidad" />
         <activity android:name=".terminos_y_condiciones" />
-        <activity android:name=".sign_up" />
-        <activity android:name=".sign_in" />
+        <activity android:name=".signup.SignUp" />
+        <activity android:name=".sign_in.SignIn" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

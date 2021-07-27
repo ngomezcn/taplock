@@ -1,4 +1,4 @@
-package app.taplock.sapo;
+package app.taplock.sapo.menu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,13 @@ import android.view.MenuItem;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class menu extends AppCompatActivity {
+import app.taplock.sapo.HelpFragment;
+import app.taplock.sapo.NotificationsFragment;
+import app.taplock.sapo.ProfileFragment;
+import app.taplock.sapo.R;
+import app.taplock.sapo.home.HomeFragment;
+
+public class Menu extends AppCompatActivity {
     BottomNavigationView btnNav;
 
     @Override
@@ -24,7 +30,6 @@ public class menu extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_layout,new HomeFragment()).commit();
 
-
         BadgeDrawable badge_notifications = btnNav.getOrCreateBadge(R.id.notification);
 
         badge_notifications.setBackgroundColor(Color.RED);
@@ -34,6 +39,8 @@ public class menu extends AppCompatActivity {
         badge_notifications.setVisible(true);
 
     }
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new
             BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -68,4 +75,6 @@ public class menu extends AppCompatActivity {
             return true;
         }
     };
+
+
 }
