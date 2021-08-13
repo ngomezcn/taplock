@@ -319,5 +319,6 @@ public class SignUp extends AppCompatActivity implements View.OnTouchListener {
 
         Intent intent = new Intent(SignUp.this, SignIn.class);
         startActivity(intent);
+        finish();
     }
 }

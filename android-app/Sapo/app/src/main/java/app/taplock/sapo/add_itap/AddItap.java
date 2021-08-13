@@ -138,7 +138,7 @@ public class AddItap extends AppCompatActivity {
                 if(response.code() == 200)
                 {
                     AddItapModel responseFromAPI = response.body();
-                    Toast.makeText(AddItap.this, "RESPONSE: "+ responseFromAPI.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddItap.this, responseFromAPI.getMessage(), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(AddItap.this, Menu.class);
                     //intent.putExtra("email", email.getText().toString());

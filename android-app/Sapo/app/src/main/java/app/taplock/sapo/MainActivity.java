@@ -1,6 +1,7 @@
 package app.taplock.sapo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import app.taplock.sapo.sign_in.SignIn;
 
@@ -27,11 +30,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //Toast.makeText(getApplicationContext(),"EKKISDE",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
         finish();
+        /*Uri uri = getIntent().getData();
 
+        // checking if the uri is null or not.
+        if (uri != null) {
+            // if the uri is not null then we are getting the
+            // path segments and storing it in list.
+
+
+            List<String> parameters = uri.getPathSegments();
+
+            // after that we are extracting string from that parameters.
+            String param = parameters.get(parameters.size() - 1);
+
+            Toast.makeText(getApplicationContext(), param,Toast.LENGTH_LONG).show();
+
+            // on below line we are setting
+            // that string to our text view
+            // which we got as params.
+        }*/
         // initializing our views
         nameEdt = findViewById(R.id.idEdtName);
         jobEdt = findViewById(R.id.idEdtJob);
@@ -54,68 +75,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*private void postData(String name, String job) {
 
-        // below line is for displaying our progress bar.
-        loadingPB.setVisibility(View.VISIBLE);
 
-        // on below line we are creating a retrofit
-        // builder and passing our base url
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://taplock.app/")
-                // as we are sending data in json format so
-                // we have to add Gson converter factory
-                .addConverterFactory(GsonConverterFactory.create())
-                // at last we are building our retrofit builder.
-                .build();
 
-        // below line is to create an instance for our retrofit api class.
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
 
-        // passing data from our text fields to our modal class.
-        DataModal modal = new DataModal(name, job);
-
-        // calling a method to create a post and passing our modal class.
-        Call<DataModal> call = retrofitAPI.createPost(modal);
-
-        // on below line we are executing our method.
-        call.enqueue(new Callback<DataModal>() {
-            @Override
-            public void onResponse(Call<DataModal> call, Response<DataModal> response) {
-                // this method is called when we get response from our api.
-                Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
-
-                // below line is for hiding our progress bar.
-                loadingPB.setVisibility(View.GONE);
-
-                // on below line we are setting empty text
-                // to our both edit text.
-                jobEdt.setText("");
-                nameEdt.setText("");
-
-                // we are getting response from our body
-                // and passing it to our modal class.
-                DataModal responseFromAPI = response.body();
-
-                if (!responseFromAPI.getName().isEmpty())
-                {
-                    // on below line we are getting our data from modal class and adding it to our string.
-
-                    String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getXd() + "\n" + "Job : " + responseFromAPI.getJob();
-
-                    // below line we are setting our
-                    // string to our text view.
-                    responseTV.setText(responseString);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<DataModal> call, Throwable t) {
-                // setting text to our text view when
-                // we get error response from API.
-                responseTV.setText("Error found is : " + t.getMessage());
-            }
-        });
-    }*/
 }

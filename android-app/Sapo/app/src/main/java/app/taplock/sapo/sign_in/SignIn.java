@@ -221,7 +221,7 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
                             finish();
                         }
                     }
-                    else if (responseFromAPI.getSYSTEM_CODE().equals("EMAIL_VERIFICATION"))
+                    if (responseFromAPI.getSYSTEM_CODE().equals("EMAIL_VERIFICATION"))
                     {
                         if(remember_me()) {
 

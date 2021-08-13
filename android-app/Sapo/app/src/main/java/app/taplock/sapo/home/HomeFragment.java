@@ -39,6 +39,8 @@ import app.taplock.sapo.RetrofitAPI;
 import app.taplock.sapo.add_itap.AddItap;
 import app.taplock.sapo.add_itap.AddItapModel;
 import app.taplock.sapo.menu.Menu;
+import app.taplock.sapo.sign_in.SignIn;
+import app.taplock.sapo.users_list.UsersList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +55,7 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private LinearLayout layout_background;
+    private LinearLayout text_no_itaps;
 
     private GetCredentials credentials;
 
@@ -64,10 +67,12 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
     private TextView error_text;
 
     ArrayList<String> nameFilter = new ArrayList<String>();
+    ArrayList<String> keyFilter = new ArrayList<String>();
     ArrayList<String> addressFilter = new ArrayList<String>();
     ArrayList<String> statusFilter = new ArrayList<String>();
 
     ArrayList<String> name = new ArrayList<String>();
+    ArrayList<String> key = new ArrayList<String>();
     ArrayList<String> address = new ArrayList<String>();
     ArrayList<String> status = new ArrayList<String>();
 
@@ -87,6 +92,7 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
 
         listItemsView = inflater.inflate(R.layout.home_fragment, container, false);
         recyclerView = listItemsView.findViewById(R.id.programmingLangList);
+        text_no_itaps = listItemsView.findViewById(R.id.text_no_itaps);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -109,7 +115,7 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
     private String getEmail(Context mContext)
     {
         String PREF_EMAIL = "email";
-        SharedPreferences pref = mContext.getSharedPreferences(PREFS_NAME,mContext.MODE_PRIVATE);
+        SharedPreferences pref = mContext.getSharedPreferences(PREFS_NAME, mContext.MODE_PRIVATE);
         email = pref.getString(PREF_EMAIL, null);
 
         return email;
@@ -167,6 +173,7 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
                 nameFilter.clear();
                 addressFilter.clear();
                 statusFilter.clear();
+                keyFilter.clear();
 
                 if(s.toString().isEmpty())
                 {
@@ -186,7 +193,8 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
         recyclerView.setAdapter(adapter);
 
     }
-        private void Filter(String text) {
+
+    private void Filter(String text) {
 
         for (int i = 0;i < name.size();i++) {
 
@@ -195,6 +203,7 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
                 nameFilter.add(name.get(i));
                 addressFilter.add(address.get(i));
                 statusFilter.add(status.get(i));
+                keyFilter.add(key.get(i));
             }
             adapter = new AppAdapter(nameFilter,addressFilter,statusFilter, this);
             recyclerView.setAdapter(adapter);
@@ -204,7 +213,22 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
 
     @Override
     public void onNoteClick(int position) {
-        Toast.makeText(getContext(),"HOLA "+position,Toast.LENGTH_SHORT).show();
+
+        String _key = null;
+        if(search_home.getText().toString().matches("")) {
+            //Toast.makeText(getContext(),name.get(position) + " . " + key.get(position),Toast.LENGTH_SHORT).show();
+            _key = key.get(position);
+           // Toast.makeText(getContext(), "HOLA " + position, Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            _key = keyFilter.get(position);
+            Toast.makeText(getContext(),nameFilter.get(position) + " . " + keyFilter.get(position),Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent(getContext(), UsersList.class);
+        intent.putExtra("KEY", _key);
+        startActivity(intent);
     }
 
     private boolean postData() {
@@ -241,18 +265,25 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
                 {
                     GetItapsModel responseFromAPI = response.body();
 
-                    int index = 0;
+                    int check = 0;
                     for (int i = 0; i < 999; i++)
                     {
                         try {
                             name.add(responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("name").toString().substring(1).substring(0, responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("name").toString().length() - 2));
                             address.add(responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("address").toString().substring(1).substring(0, responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("address").toString().length() - 2));
                             status.add(responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("status").toString());
+                            key.add(responseFromAPI.getResponse().get(String.valueOf(i)).getAsJsonObject().getAsJsonPrimitive("key").toString());
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             break;
                         }
+                        check = check + 1;
+                    }
+
+                    if(check==0)
+                    {
+                        have_no_itaps();
                     }
                     Update();
                     focusBackgroundAfterSendData();
@@ -262,16 +293,21 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
                     try {
                         JSONObject obj = new JSONObject(response.errorBody().string());
                         showError(obj.getString("message"));
+                        Toast.makeText(getContext(),obj.getString("message"),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getContext(), SignIn.class);
+                        startActivity(intent);
 
                     } catch (IOException | JSONException e) {
                         Toast.makeText(getContext(), "ERROR: No hay respuesta del servidor, inténtelo mas tarde.", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        Intent intent = new Intent(getContext(), SignIn.class);
                         startActivity(intent);
 
                         e.printStackTrace();
                     }
                 }
             }
+
+
 
             @Override
             public void onFailure(Call<GetItapsModel> call, Throwable t) {
@@ -281,6 +317,11 @@ public class HomeFragment extends Fragment implements AppAdapter.OnNoteListener 
         });
 
         return true;
+    }
+
+    private void have_no_itaps() {
+        text_no_itaps.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
     }
 
     private void showError(String s)

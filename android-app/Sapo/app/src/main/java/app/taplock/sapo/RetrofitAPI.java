@@ -1,11 +1,13 @@
 package app.taplock.sapo;
 
 import app.taplock.sapo.add_itap.AddItapModel;
+import app.taplock.sapo.buy_ekeys.Buy_eKeysModel;
 import app.taplock.sapo.emailverification.EmailVerificationModel;
 import app.taplock.sapo.emailverification.ResendVerificationModel;
 import app.taplock.sapo.home.GetItapsModel;
 import app.taplock.sapo.sign_in.BannerModel;
 import app.taplock.sapo.sign_in.SignInModel;
+import app.taplock.sapo.users_list.UsersListModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -42,4 +44,11 @@ public interface RetrofitAPI {
 
     @POST("get-banner-message/")
     Call<BannerModel> createPost(@Body BannerModel dataModel);
+
+    @POST("get-itap-by-id/")
+    Call<UsersListModel> createPost(@Body UsersListModel dataModel);
+
+    @POST("buy-ekeys/")
+    Call<Buy_eKeysModel> createPost(@Body Buy_eKeysModel dataModel);
+
 }

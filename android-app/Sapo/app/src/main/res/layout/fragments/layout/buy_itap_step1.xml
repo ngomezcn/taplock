@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:layout_width="370dp"
+    android:layout_height="418dp"
+    android:background="#F4F5F7"
+    android:padding="20dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:letterSpacing="0.02"
+        android:lineHeight="18sp"
+        android:paddingTop="10dp"
+        android:text="Método de pago"
+        android:textColor="#2E3E5C"
+        android:textFontWeight="700"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_title"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/rounded_bd"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="left"
+                android:letterSpacing="0.02"
+                android:lineHeight="18dp"
+                android:text="Puede realizar su compra desde España, con las siguientes tarjetas:"
+                android:textColor="#2a3d66"
+                android:textFontWeight="700"
+                android:textSize="13.2dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="left"
+                android:letterSpacing="0.02"
+                android:lineHeight="32sp"
+                android:text="-"
+                android:textColor="#4c9173"
+                android:textFontWeight="700"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:lineHeight="302sp"
+                android:text="· "
+                android:textColor="#4c9173"
+                android:textFontWeight="700"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:lineHeight="32sp"
+                android:text="Visa"
+                android:textColor="#2a3d66"
+                android:textFontWeight="700"
+                android:textSize="13.2dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:lineHeight="302sp"
+                android:text="· "
+                android:textColor="#4c9173"
+                android:textFontWeight="700"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:lineHeight="32sp"
+                android:text="Mastercard"
+                android:textColor="#2a3d66"
+                android:textFontWeight="700"
+                android:textSize="13.2dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:lineHeight="302sp"
+                android:text="· "
+                android:textColor="#4c9173"
+                android:textFontWeight="700"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:lineHeight="32sp"
+                android:text="American Express"
+                android:textColor="#2a3d66"
+                android:textFontWeight="700"
+                android:textSize="13.2dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:lineHeight="302sp"
+                android:text="· "
+                android:textColor="#4c9173"
+                android:textFontWeight="700"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center"
+                android:letterSpacing="0.02"
+                android:lineHeight="32sp"
+                android:text="Cartes Bancaires	"
+                android:textColor="#2a3d66"
+                android:textFontWeight="700"
+                android:textSize="13.2dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="En breves estaran disponibles mas metodos de pago."
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="13.2dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next_step_pop_up"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/ripple_effect_raised"
+        android:text="Continuar (1/3)"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

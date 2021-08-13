@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".users_list.UsersList">
+
+    <LinearLayout
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cancel_add_itap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect_text"
+                android:drawableStart="@drawable/ic_back"
+                android:drawableLeft="@drawable/ic_back"
+                android:onClick="go_to_menu"
+                android:drawablePadding="1sp"
+                android:fontFamily="@font/inter_bold"
+                android:letterSpacing="0.05"
+                android:lineHeight="500dp"
+                android:textColor="#FF6464"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_help"
+                    android:drawableLeft="@drawable/ic_help"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="right"
+                    android:letterSpacing="0.05"
+                    android:lineHeight="500dp"
+                    android:text=" Tienes dudas?"
+                    android:textColor="#3E5481"
+
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/hide_01"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"></View>
+
+        <LinearLayout
+            android:id="@+id/hide_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/itaps_bd"
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="Información"
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="Nombre: "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="Dirección: "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="Usuarios activos: "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/active_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="Usuarios dados de baja: "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/down_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="eKeys utilizadas "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/used_eKeys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="eKeys disponibles: "
+                    android:textColor="#2a3d66"
+                    android:textFontWeight="700"
+                    android:textSize="13.2dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/available_eKeys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="left"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="32sp"
+                    android:text="-"
+                    android:textColor="#4c9173"
+                    android:textFontWeight="700"
+                    android:textSize="13.4dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/hide_03"
+            android:layout_width="match_parent"
+            android:layout_height="11dp"/>
+
+        <LinearLayout
+            android:id="@+id/hide_04"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buy_ekeys_btn"
+                android:layout_weight=".5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect_square"
+                android:text="Comprar eKeys"
+                android:letterSpacing="0.05"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:backgroundTint = "@color/updateColor"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/add_user"
+
+                android:layout_weight=".5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.05"
+                app:backgroundTint = "@color/mainGreen"
+
+                android:background="@drawable/ripple_effect_square_maingreen"
+                android:text="Añadir usuario"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="18sp"
+            android:paddingTop="15dp"
+            android:text="Usuarios     "
+            android:textColor="#2E3E5C"
+            android:textFontWeight="700"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:inputType="text"
+                android:id="@+id/search_users_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/search_bd"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="7dp"
+                android:fontFamily="@font/inter"
+                android:hint="Buscar usuario..."
+                android:letterSpacing="0.02"
+                android:paddingLeft="22dp"
+                android:paddingTop="17dp"
+                android:paddingRight="27dp"
+                android:paddingBottom="17dp"
+                android:textColor="#9FA5C0"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/itaps_bd"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/user_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:paddingBottom="1dp"
+                android:backgroundTint="@color/mainGreen"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="25dp"
+                    android:backgroundTint="@color/mainGray"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="0.02"
+                    android:lineHeight="18sp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="1dp"
+                    android:text="Todavia no has añadido a ningun usuario."
+                    android:textColor="#2E3E5C"
+                    android:textFontWeight="700"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="6dp"
+        android:text=""
+        android:visibility="visible"/>
+
+    <RelativeLayout
+
+        android:id="@+id/loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+</RelativeLayout>
