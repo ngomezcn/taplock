@@ -1,6 +1,7 @@
 package app.taplock.sapo;
 
 import app.taplock.sapo.add_itap.AddItapModel;
+import app.taplock.sapo.add_user.AddUserModel;
 import app.taplock.sapo.buy_ekeys.Buy_eKeysModel;
 import app.taplock.sapo.emailverification.EmailVerificationModel;
 import app.taplock.sapo.emailverification.ResendVerificationModel;
@@ -50,5 +51,8 @@ public interface RetrofitAPI {
 
     @POST("buy-ekeys/")
     Call<Buy_eKeysModel> createPost(@Body Buy_eKeysModel dataModel);
+
+    @POST("add-new-user/")
+    Call<AddUserModel> createPost(@Body AddUserModel dataModel);
 
 }

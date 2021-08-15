@@ -216,7 +216,7 @@
 
         </LinearLayout>
 
-        <androidx.viewpager.widget.ViewPager
+        <View
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
@@ -229,7 +229,7 @@
             android:gravity="left"
             android:letterSpacing="0.02"
             android:lineHeight="18dp"
-            android:text="En breves estaran disponibles mas metodos de pago."
+            android:text="En breves habrá más métodos de pago."
             android:textColor="#2a3d66"
             android:textFontWeight="700"
             android:textSize="13.2dp"

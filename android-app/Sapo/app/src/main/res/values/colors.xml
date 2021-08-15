@@ -9,8 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textGray">#9FA5C0</color>
     <color name="mainGreen">#1FCC79</color>
+    <color name="mainOrange">#FF5842</color>
     <color name="mainGray">#F4F5F7</color>
     <color name="warningColor">#36846b</color>
     <color name="errorColor">#f96d6d</color>
     <color name="updateColor">#639cd9</color>
+    <color name="darkblue">#1B3F65</color>
+
+
 </resources>

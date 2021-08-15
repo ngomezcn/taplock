@@ -393,12 +393,12 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
 
                         JSONObject obj = new JSONObject(response.errorBody().string());
                         showError(obj.getString("message"));
-                        loadBanner();
+                        loadErrorToBanner(obj.getString("message"));
 
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                         Toast.makeText(SignIn.this, "El servidor no se encuentra disponible, inténtelo más tarde.", Toast.LENGTH_SHORT).show();
-                        loadBanner();
+                        loadErrorToBanner("El servidor no se encuentra disponible, cierre la aplicación e inténtelo más tarde. Disculpe las molestias.");
                     }
                 }
 
@@ -458,5 +458,23 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
             banner.setBackgroundColor(getResources().getColor(R.color.updateColor));
             text_banner.setText(message);
         }
+    }
+
+    private void loadErrorToBanner(String message)
+    {
+
+        int NONE = 0;
+        int WARNING = 1;
+        int ERROR = 2;
+        int UPDATE = 3;
+
+        TextView text_banner = findViewById(R.id.text_banner);
+        RelativeLayout banner = findViewById(R.id.banner);
+
+
+        banner.setVisibility(View.VISIBLE);
+        banner.setBackgroundColor(getResources().getColor(R.color.errorColor));
+        text_banner.setText(message);
+
     }
 }

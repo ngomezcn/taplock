@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/go_back"
+                android:background="@drawable/ripple_effect_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_back"
+                android:drawablePadding="1sp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="#FF6464"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:lineHeight="500dp"
+                android:letterSpacing="0.05"
+                android:drawableLeft="@drawable/ic_back" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_help"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="right"
+                    android:letterSpacing="0.05"
+                    android:lineHeight="500dp"
+                    android:text="Como funciona "
+                    android:textColor="#3E5481"
+
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="32sp"
+            android:paddingTop="17dp"
+            android:text="Añadir usuario"
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="700"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:paddingBottom="25dp"
+
+            android:text="Ingrese los datos requeridos"
+            android:textAlignment="center"
+            android:textColor="#9FA5C0"
+            android:textFontWeight="600"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:fontFamily="@font/inter"
+            android:inputType="textPersonName"
+
+            android:lineHeight="18sp"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+
+            android:hint="Nombre"
+            android:textColor="#9FA5C0"
+            android:drawableLeft="@drawable/ic_person" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@android:color/white"/>
+
+        <EditText
+            android:id="@+id/user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_simple_phone"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:fontFamily="@font/inter"
+            android:inputType="numberDecimal"
+
+            android:lineHeight="18sp"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+
+            android:hint="Número móvil"
+            android:textColor="#9FA5C0"
+            android:drawableLeft="@drawable/ic_person" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="Antes de continuar, considere que añadir un usuario agota 1 eKey"
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="13.2dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/follow_add_user_01"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="continuar"
+            android:textColor="@color/white"
+            android:background="@drawable/ripple_effect_raised"/>
+
+        <!--android:backgroundTint="#1FCC79"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:fontFamily="@font/inter"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:lineHeight="25sp"
+
+                android:text="¿Tienes dudas?"
+                android:textAlignment="center"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="600"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingRight="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.04"
+                android:lineHeight="25sp"
+
+                android:text="Contacta con nosotros"
+                android:textAlignment="center"
+                android:textColor="#1FCC79"
+                android:textFontWeight="600"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+</RelativeLayout>

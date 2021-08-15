@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import app.taplock.sapo.MainActivity;
 import app.taplock.sapo.R;
 import app.taplock.sapo.RetrofitAPI;
+import app.taplock.sapo.add_user.AddUser;
 import app.taplock.sapo.buy_ekeys.Buy_eKeys;
 import app.taplock.sapo.menu.Menu;
 import app.taplock.sapo.sign_in.SignIn;
@@ -172,7 +173,7 @@ public class UsersList extends AppCompatActivity implements AppAdapter.OnNoteLis
             public void onClick(View v) {
                if(!loading)
                {
-
+                    go_to_add_users();
                }
             }
         });
@@ -186,6 +187,14 @@ public class UsersList extends AppCompatActivity implements AppAdapter.OnNoteLis
                 }
             }
         });
+    }
+
+    private void go_to_add_users() {
+        Intent intent = new Intent(getApplicationContext(), AddUser.class);
+
+        intent.putExtra("key", rawID);
+        startActivity(intent);
+        finish();
     }
 
     public void on_search_hide_elements()

@@ -235,9 +235,6 @@ public class Buy_eKeys extends AppCompatActivity {
         });
     }
 
-
-
-
     private boolean postData() {
 
         //blurBackgroundOnSendData();
