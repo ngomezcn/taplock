@@ -1,0 +1,264 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".sign_in.SignIn">
+
+    <RelativeLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#36846b"
+        android:visibility="gone"
+        android:elevation="5dp">
+
+        <TextView
+            android:layout_margin="5dp"
+            android:id="@+id/text_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/inter"
+            android:letterSpacing="0.03"
+            android:text=""
+            android:textSize="13dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="24sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="32sp"
+            android:paddingTop="120dp"
+            android:text="¡Bienvenido de nuevo!"
+
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="700"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:paddingTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:paddingBottom="32dp"
+
+            android:text=" Ingrese su cuenta aquí"
+            android:textAlignment="center"
+            android:textColor="#9FA5C0"
+            android:textFontWeight="600"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_message"
+            android:drawableLeft="@drawable/ic_message"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:fontFamily="@font/inter"
+            android:inputType="textPersonName"
+
+            android:lineHeight="18sp"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+
+            android:hint="Email"
+            android:textColor="#9FA5C0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:fontFamily="@font/inter"
+            android:inputType="textPassword"
+
+            android:lineHeight="18sp"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+
+            android:hint="Contraseña"
+            android:textColor="#9FA5C0"
+            android:drawableRight="@drawable/ic_pwd_visibility"
+            />
+
+        <CheckBox
+            android:id="@+id/remember_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="1sp"
+            android:text="Recordar contraseña"
+            android:fontFamily="@font/inter"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:background="@drawable/ripple_effect_text"
+
+            android:id="@+id/remember_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+
+            android:paddingTop="20dp"
+            android:paddingRight="24dp"
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:paddingBottom="2dp"
+
+            android:text="¿No recuerdas la contraseña?"
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text=""
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+
+            android:text="Iniciar sesión"
+            android:textColor="@color/white"
+            android:background="@drawable/sign_in_btn"/>
+
+        <!--android:backgroundTint="#1FCC79"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:fontFamily="@font/inter"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:lineHeight="25sp"
+
+                android:text="¿No tienes cuenta?"
+                android:textAlignment="center"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="600"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingRight="5dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple_effect_text"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.04"
+                android:lineHeight="25sp"
+                android:onClick="open_sign_up"
+                android:text="Crear Cuenta"
+                android:textAlignment="center"
+                android:textColor="#1FCC79"
+                android:textFontWeight="600"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="9dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+
+        android:id="@+id/loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+</RelativeLayout>
+
+
+

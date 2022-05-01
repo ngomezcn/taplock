@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:layout_width="370dp"
+    android:layout_height="418dp"
+    android:background="#F4F5F7"
+    android:padding="20dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:letterSpacing="0.02"
+        android:lineHeight="18sp"
+        android:paddingTop="10dp"
+        android:text="Completar pedido"
+        android:textColor="#2E3E5C"
+        android:textFontWeight="700"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/hide_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_title"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/rounded_bd"
+        android:orientation="vertical"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="Pulse el botón inferior para abrir la ventana de pago."
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="13.2dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="[Información importante]"
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="14.2dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="Hemos enviado un mensaje a su email con este enlace de pago, por si quiere pagarlo en otro momento."
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="13.2dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="left"
+            android:letterSpacing="0.02"
+            android:lineHeight="18dp"
+            android:text="Para cualquier duda o consulta puede contactar con cliente@taplock.app"
+            android:textColor="#2a3d66"
+            android:textFontWeight="700"
+            android:textSize="13.2dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/checkout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/ripple_effect_raised"
+        android:text="Completar compra"
+        android:textColor="@color/white" />
+
+    <RelativeLayout
+
+        android:id="@+id/loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

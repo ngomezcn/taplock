@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/cancel_add_itap"
+                android:background="@drawable/ripple_effect_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:drawablePadding="1sp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="#FF6464"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:lineHeight="500dp"
+                android:letterSpacing="0.05"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:textColor="#3E5481"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:lineHeight="500dp"
+                    android:letterSpacing="0.05"
+                    android:gravity="right"
+
+                    android:text="2/2"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="32sp"
+            android:paddingTop="15dp"
+            android:text="Verificación de email"
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="700"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:paddingTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:paddingBottom="25dp"
+
+            android:text="Enlace de activación"
+            android:textAlignment="center"
+            android:textColor="#9FA5C0"
+            android:textFontWeight="600"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/text_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:lineHeight="17sp"
+            android:letterSpacing="0.05"
+            android:paddingTop="15dp"
+            android:paddingRight="24dp"
+            android:text="Le hemos enviado un enlace de activación al email, [email]"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:paddingBottom="12dp"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:lineHeight="17sp"
+            android:letterSpacing="0.04"
+            android:paddingTop="6dp"
+            android:paddingRight="24dp"
+            android:text='Despues de activar su cuenta vuelva aquí y pulse en "Verificar activación"'
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:paddingBottom="12dp"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text=""
+            android:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_verificate_email"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/ripple_effect_raised"
+            android:fontFamily="@font/inter_bold"
+            android:letterSpacing="0.04"
+            android:text="Verificar activación"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@android:color/white"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:fontFamily="@font/inter"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:lineHeight="25sp"
+
+                android:text="¿No has recibido el enlace?"
+                android:textAlignment="center"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="600"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:paddingRight="5dp"/>
+
+            <TextView
+                android:id="@+id/resend_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple_effect_text"
+
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.04"
+                android:lineHeight="25sp"
+                android:layout_marginBottom="7dp"
+
+                android:text="Volver a enviar"
+                android:textAlignment="center"
+                android:textColor="#1FCC79"
+                android:textFontWeight="600"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/remember_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:text="(El enlace puede tardar hasta 15 minutos en llegar)"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/loadingBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>
