@@ -1,0 +1,69 @@
+
+#include <SoftwareSerial.h>  
+#include "utils/bluetooth.h"
+#include "utils/commands.h"
+#include "utils/config.cpp"
+
+// HC-05 Bluetooth
+SoftwareSerial miBT(BT_RX, BT_TX);  
+char incomingByte;
+
+// Unsigned Int 16 bytes: Max 65535
+uint_fast16_t test = 140;
+
+void setup(){
+  Serial.begin(9600);   
+  miBT.begin(38400);     
+  pinMode(AT_PIN, OUTPUT);
+  pinMode(BT_POWER, OUTPUT);
+  pinMode(13, OUTPUT);
+
+  bluetooth::start_AT_mode(miBT);
+
+  //bluetooth::start_AT_mode(miBT);
+
+  Serial.println("Listo");
+}
+
+void loop(){
+
+  //  while (Serial.available() == 0);
+
+  /*if (Serial.available() > 0) {
+    // read the incoming byte:
+    incomingByte = Serial.read();
+
+    if(incomingByte == '1')
+    {
+      Serial.println("UNO");
+      bluetooth::stop_AT_mode(miBT);
+    }
+    if(incomingByte == '2')
+    {
+      Serial.println("DOS");
+      bluetooth::start_AT_mode(miBT);
+    }
+
+    //Serial.print("I received: ");
+   // Serial.println(incomingByte);
+  }*/
+
+
+  //Serial.write("miBT.read()\n");
+  //delay(1000);
+
+  /*if (miBT.available())     	// si hay informacion disponible desde modulo
+    Serial.write(miBT.read()); 	// lee Bluetooth y envia a monitor serial de Arduino
+
+  if (Serial.available())   	// si hay informacion disponible desde el monitor serial
+    miBT.write(Serial.read()); 	// lee monitor serial y envia a Bluetooth
+      */
+
+
+  get_serial_string(miBT);
+  const char *str = "Hola";
+  if (miBT.available())
+  {
+    Serial.write(miBT.read());   
+  }       
+}
