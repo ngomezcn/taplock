@@ -1,0 +1,109 @@
+server {
+    server_name www.taplock.app taplock.app;
+    access_log  /var/log/nginx/access.log;
+
+    proxy_read_timeout 300;
+    proxy_connect_timeout 300;
+    proxy_send_timeout 300;
+
+    location /static/ {
+        root /home/taplock/backend;
+    }
+
+    error_page 502 /502.html;
+      location = /502.html {
+
+      root  /home/taplock/backend/templates;
+    }
+
+
+    # Redirect HTTP to Gunicorn
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /netdata/ {
+        auth_basic "Protected";
+       # auth_basic_user_file passwords;
+        auth_basic_user_file /etc/nginx/.htpasswd;
+         proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $host:$server_port;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https; #New
+        proxy_http_version 1.1;
+        proxy_pass_request_headers on;
+        proxy_set_header Connection "keep-alive";
+        proxy_store off;
+        gzip on;
+        gzip_proxied any;
+        gzip_types *;
+        rewrite ^/netdata(/.*)$ $1 break;
+        proxy_pass http://localhost:19999;
+    }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/taplock.app/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/taplock.app/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+
+
+
+
+
+}
+server {
+
+   proxy_read_timeout 300;
+   proxy_connect_timeout 300;
+   proxy_send_timeout 300;
+
+    if ($host = www.taplock.app) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = taplock.app) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    server_name www.taplock.app taplock.app;
+    return 404; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/taplock.app/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/taplock.app/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = www.taplock.app) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = taplock.app) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+
+
+    server_name www.taplock.app taplock.app;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+
+
+}

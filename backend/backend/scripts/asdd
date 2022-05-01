@@ -1,0 +1,39 @@
+package app.taplock.sapo;
+
+public class DataModal {
+
+    // string variables for our password and name
+    private String password;
+    private String name;
+    private String caca;
+
+    public DataModal(String password, String name) {
+        this.password = password;
+        this.name = name;
+    }
+
+    public String getCaca() {
+        return caca;
+    }
+
+    public void setCaca(String caca) {
+        this.caca = caca;
+    }
+
+    public String getpassword() {
+        return password;
+    }
+
+    public void setpassword(String password) {
+        this.password = password;
+    }
+
+    public String getname() {
+        return name;
+    }
+
+    public void setname(String name) {
+        this.name = name;
+    }
+
+}

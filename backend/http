@@ -1,6 +1,0 @@
-# Hello       - http http://172.10.10.10:8000/hello/ 'Authorization: Token {TOKEN}'
-
-# Sign In  - http post http://172.10.10.10:8000/sign-in/ password=1940 email=test@gmail.com
-# Sign Up  - http post http://172.10.10.10:8000/sign-up/ email=test@gmail.comm name=naim password=1940 phone=609513287
-# Sign Off - http http://172.10.10.10:8000/sign-off/ 'Authorization: Token {TOKEN}'
-
