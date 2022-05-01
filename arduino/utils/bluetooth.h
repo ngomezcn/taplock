@@ -7,7 +7,7 @@ namespace bluetooth
 {
   void start_AT_mode(SoftwareSerial device)
   {
-    Serial.println("start_AT_mode()");
+    Serial.println("exec: start_AT_mode()");
     delay(500);  
     digitalWrite(BT_POWER, LOW);
     delay(500);  
@@ -15,12 +15,13 @@ namespace bluetooth
     delay(500);  
     digitalWrite(BT_POWER, HIGH);  
     delay(2000);  
-    device.println("AT+VERSION?\n");  
+    device.println("AT+ADDR?\n");  
+    device.println("AT+VERSION?\r\n");  
   }
 
   void stop_AT_mode(SoftwareSerial device)
   {
-    Serial.println("stop_AT_mode()");
+    Serial.println("exec: stop_AT_mode()");
     delay(500);  
     digitalWrite(AT_PIN, LOW);
     delay(500);  
@@ -29,6 +30,8 @@ namespace bluetooth
 
   void reboot()
   {
+    Serial.println("exec: reboot()");
+
     digitalWrite(BT_POWER, LOW);
     delay(500);  
     digitalWrite(BT_POWER, HIGH);

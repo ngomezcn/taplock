@@ -13,11 +13,22 @@
 // libreria que permite establecer pines digitales
 // para comunicacion serie
 
+#define AT_PIN 7
+#define BT_POWER 8
+
+#define BT_RX 5
+#define BT_TX 6
+
+
+
 SoftwareSerial miBT(5, 5); 	// pin 10 como RX, pin 11 como TX
 void setup(){
   Serial.begin(9600);		
   miBT.begin(38400);		
   Serial.println("Listo");
+  digitalWrite(BT_POWER, LOW);
+  delay(500);  
+  digitalWrite(BT_POWER, HIGH);
 }
 
 void loop(){
@@ -30,7 +41,7 @@ if (miBT.available())
 
 if (Serial.available())   	
 {
-   miBT.write(Serial.read()); 	
+   miBT.write(Serial.read()+"ASD"); 	
 }
 
 }

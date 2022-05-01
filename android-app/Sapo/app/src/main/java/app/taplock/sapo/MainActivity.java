@@ -35,12 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toast.makeText(getApplicationContext(),"EKKISDE",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
         finish();
 
-        AES xd = new AES();
+        /*AES xd = new AES();
 
         String key = "1234567812345678";
         String initVector = "jvHJ1XFt0IXBrxxx";
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         TextView _03 = findViewById(R.id.buenas);
 
         _01.setText(xd.decryptedResult);
-        _02.setText(xd.encryptedResult);
+        _02.setText(xd.encryptedResult);*/
 
 
         /*Uri uri = getIntent().getData();

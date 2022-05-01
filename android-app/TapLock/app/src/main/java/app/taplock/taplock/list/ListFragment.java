@@ -1,64 +1,112 @@
-package app.taplock.taplock;
+package app.taplock.taplock.list;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ListFragment extends Fragment {
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import app.taplock.taplock.R;
+import android.content.SharedPreferences;
+import android.widget.Toast;
 
-    public ListFragment() {
-        // Required empty public constructor
-    }
+public class ListFragment extends Fragment implements Adapter.OnNoteListener {
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
-        ListFragment fragment = new ListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private View listItemsView;
+
+    ArrayList<String> name = new ArrayList<String>();
+    ArrayList<String> address = new ArrayList<String>();
+    ArrayList<String> tokensList;
+
+    private Context mContext;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        //return inflater.inflate(R.layout.fragment_list, container, false);
+
+        name.add("Sosmatic");
+        address.add("Via Llacuna");
+
+        loadData(mContext);
+
+        Toast.makeText(getContext(), tokensList.size() + "", Toast.LENGTH_SHORT).show();
+
+        for(int i = 0; i < tokensList.size(); i++)
+        {
+            name.add(tokensList.get(i));
+            address.add(tokensList.get(i));
+
+        }
+
+        listItemsView = inflater.inflate(R.layout.fragment_list, container, false);
+        recyclerView = listItemsView.findViewById(R.id.programmingLangList);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new Adapter(name,address, this);
+        recyclerView.setAdapter(adapter);
+        if(name.isEmpty())
+        {
+             LinearLayout EmptyList = listItemsView.findViewById(R.id.empty_list);
+             EmptyList.setVisibility(View.VISIBLE);
+             recyclerView.setVisibility(View.GONE);
+
+        }
+        return listItemsView;
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+    }
+
+    private boolean loadData(Context mContext) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("shared preferences", mContext.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("test02", null);
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        tokensList = gson.fromJson(json, type);
+
+        if (tokensList == null) {
+            tokensList = new ArrayList<>();
+        }
+
+        return true;
+    }
+
+
+    @Override
+    public void onNoteClick(int position) {
+
     }
 }

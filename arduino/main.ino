@@ -1,53 +1,47 @@
+/*
+  Capitulo 24 de Arduino desde cero en Español.
+  Programa que permite establecer una comunicacion con el modulo Bluetooth HC-05
+  y configurarlo de manera tal que pueda ser vinculado mediante un telefono
+  movil o dispositivo compatible.
 
-#include <SoftwareSerial.h>  
-#include "utils/bluetooth.h"
-#include "utils/commands.h"
-#include "utils/config.cpp"
+  Autor: bitwiseAr  
 
-// HC-05 Bluetooth
-SoftwareSerial miBT(BT_RX, BT_TX);  
-char incomingByte;
+*/
 
-// Unsigned Int 16 bytes: Max 65535
-uint_fast16_t test = 140;
+#include <SoftwareSerial.h>
+SoftwareSerial miBT(5, 6);  // pin 10 como RX, pin 11 como TX
 
 void setup(){
-  Serial.begin(9600);   
-  miBT.begin(38400);     
+  Serial.begin(9600);   // comunicacion de monitor serial a 9600 bps
+  Serial.println("Listo");  // escribe Listo en el monitor
+  miBT.begin(38400);    // comunicacion serie entre Arduino y el modulo a 38400 bps
 
-
-  pinMode(AT_PIN, OUTPUT);
-  pinMode(BT_POWER, OUTPUT);
-  pinMode(13, OUTPUT);
-  //digitalWrite(BT_POWER, HIGH);  
-  Serial.println("Listo");
+  
 }
 
-void loop(){
-
-  //  while (Serial.available() == 0);
-
-  /*if (Serial.available() > 0) {
-    // read the incoming byte:
-    incomingByte = Serial.read();
-
-    if(incomingByte == '1')
-    {
-      Serial.println("UNO");
-      bluetooth::stop_AT_mode(miBT);
-    }
-    if(incomingByte == '2')
-    {
-      Serial.println("DOS");
-      bluetooth::start_AT_mode(miBT);
-    }
-
-    //Serial.print("I received: ");
-   // Serial.println(incomingByte);
-  }*/
-  get_serial_string(miBT);
+void loop()
+{
   if (miBT.available())
   {
-    Serial.write(miBT.read());   
-  }       
+      //const char a = miBT.read(); 
+
+      String b = miBT.readString();
+      String check = "123";
+
+      Serial.println(b);
+
+      if(check == b)
+      {
+        Serial.println("IGUAL");
+      }
+  }
+
+  if (Serial.available())
+  {
+    String a = Serial.readString();
+    //miBT.write(a);
+    miBT.print(a);
+    Serial.println("Enviando datos: " + a);
+  }    
+
 }

@@ -1,6 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="50dp"
+    android:orientation="vertical"
+    tools:context=".list.ListFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:padding="20dp"
+        android:focusable="true" android:focusableInTouchMode="true">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="18sp"
+            android:paddingTop="20dp"
+            android:text="Añadir acceso"
+            android:layout_marginBottom="5dp"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="700"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/itaps_bd">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:text="1.- Automático"
+                android:layout_marginBottom="5dp"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineHeight="18sp"
+                android:letterSpacing="0.01"
+                android:text="Para obtener acceso de manera automática deben enviarle un enlace de acceso, cuando le pregunte con qué aplicación quiere abrir el enlace seleccione TapLock."/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="18sp"
+                    android:letterSpacing="0.01"
+                    android:text="Ejemplo: "/>
+
+                <TextView
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="18sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.01"
+                    android:text="https://taplock.app/share-key/M9VmveDODU86rn3A."/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/itaps_bd">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:text="2.- Manual"
+                android:layout_marginBottom="5dp"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineHeight="18sp"
+                android:letterSpacing="0.01"
+                android:text="Debe introducir el codigo de acceso en el siguiente recuardo. (Puede pegarlo directamente)"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:fontFamily="@font/inter"
+                android:hint="Código de acceso"
+
+                android:inputType="textPersonName"
+                android:lineHeight="18sp"
+                android:textColor="#9FA5C0"
+
+                android:textFontWeight="500"
+                android:textSize="15sp" />
+
+            <TextView
+                android:maxLines="1"
+                android:singleLine="true"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineHeight="18sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.01"
+                android:text=" Continuar"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/itaps_bd">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:text="2.- Código QR"
+                android:layout_marginBottom="5dp"
+                android:textColor="#2E3E5C"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineHeight="18sp"
+                android:letterSpacing="0.01"
+                android:text="Esta función todavia no esta disponible."/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+
+        android:id="@+id/loading_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/loading"
+        android:elevation="10dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+</LinearLayout>

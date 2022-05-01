@@ -102,15 +102,6 @@
             android:orientation="vertical"
             android:background="@drawable/itaps_bd">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:paddingBottom="1dp"
-                android:id="@+id/programmingLangList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"/>
-
             <LinearLayout
                 android:id="@+id/text_no_itaps"
                 android:layout_width="match_parent"
@@ -118,7 +109,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:elevation="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,7 +123,7 @@
                     android:letterSpacing="0.02"
                     android:lineHeight="18sp"
                     android:paddingTop="20dp"
-                    android:text="Vaya.. por el momento no tienes ningun iTap"
+                    android:text="Por el momento no tienes ningun iTap"
                     android:textColor="#2E3E5C"
                     android:textFontWeight="700"
                     android:textSize="15sp"

@@ -136,45 +136,16 @@
             android:textSize="15sp"
             />
 
-        <TextView
-            android:background="@drawable/ripple_effect_text"
 
-            android:id="@+id/remember_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-
-            android:paddingTop="20dp"
-            android:paddingRight="24dp"
-
-            android:fontFamily="@font/inter"
-            android:gravity="center_horizontal"
-            android:letterSpacing="0.02"
-            android:lineHeight="25sp"
-            android:paddingBottom="2dp"
-
-            android:text="¿No recuerdas la contraseña?"
-            android:textAlignment="center"
-            android:textColor="#2E3E5C"
-            android:textFontWeight="600"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@android:color/white"/>
 
         <TextView
-            android:id="@+id/error_text"
+            android:id="@+id/error_text_sin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ff0000"
             android:textSize="13dp"
             android:textStyle="bold"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
             android:text=""
             android:visibility="visible"/>
 
@@ -238,6 +209,28 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="9dp"/>
         </LinearLayout>
+
+        <TextView
+            android:background="@drawable/ripple_effect_text"
+
+            android:id="@+id/remember_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+
+
+            android:fontFamily="@font/inter"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.02"
+            android:lineHeight="25sp"
+            android:paddingBottom="2dp"
+
+            android:text="Recuperar contraseña ->"
+            android:textAlignment="center"
+            android:textColor="#2E3E5C"
+            android:textFontWeight="600"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

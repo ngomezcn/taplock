@@ -54,7 +54,8 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
         setContentView(R.layout.activity_sign_in);
 
         remember_me = findViewById(R.id.remember_me);
-        error_text = findViewById(R.id.error_text);
+        error_text =  (TextView) findViewById(R.id.error_text_sin);
+
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -97,20 +98,17 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
             loadBanner();
         }
 
-
-
-
-
         old_pwd  = (EditText)findViewById(R.id.password);
         old_pwd.setOnTouchListener(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getBanner();
+                 clearError();
                 // validating the data
                 if(fieldValidation())
                 {
-                    clearError();
                     postData();
                 }
             }
@@ -210,6 +208,7 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
 
                 if(response.code() == 200)
                 {
+
                     if(responseFromAPI.getSYSTEM_CODE().equals("SUCCESS"))
                     {
                         if(remember_me()) {
@@ -244,7 +243,7 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
 
                         JSONObject obj = new JSONObject(response.errorBody().string());
 
-                        showError(obj.getString("message"));
+                        //showError(obj.getString("message"));
 
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
@@ -257,18 +256,21 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onFailure(Call<SignInModel> call, Throwable t) {
 
-                Toast.makeText(SignIn.this, "Ha ocurrido un error.", Toast.LENGTH_SHORT).show();
-                showError(t.getMessage());
+                Toast.makeText(SignIn.this, "Ha ocurrido un error, inténtelo más tarde.", Toast.LENGTH_SHORT).show();
+                //showError(t.getMessage());
+                focusBackgroundAfterSendData();
             }
         });
     }
 
     private void showError(String s)
     {
-        error_text.setText(s);
+
+       //error_text.setText(s);
     }
 
     private void clearError()
+
     {
         error_text.setText("");
     }
@@ -286,7 +288,7 @@ public class SignIn extends AppCompatActivity implements View.OnTouchListener {
 
     private void blurBackgroundOnSendData()
     {
-        loading_layout.setVisibility(View.VISIBLE);
+        //loading_layout.setVisibility(View.VISIBLE);
         layout_background.setAlpha((float) 0.78);
         button.setClickable(false);
 

@@ -8,7 +8,7 @@ const int bufferSize = 128;
 char inputBuffer[bufferSize];
 int bufferPointer = 0;
 
-boolean test = false;
+bool testt = false;
 
 void get_serial_string(SoftwareSerial BT)
 {
@@ -33,15 +33,15 @@ void get_serial_string(SoftwareSerial BT)
         {
             Serial.print("--[NEW LINE]--");   
             bufferPointer = 0;
-            test = true;
+            testt = true;
         }
     }
-    if(test)
+    if(testt)
     {
         Serial.println(strlen(inputBuffer));
         Serial.println(inputBuffer);   
 
-        test = false;
+        testt = false;
     }
 }
 

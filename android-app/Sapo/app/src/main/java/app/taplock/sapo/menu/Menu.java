@@ -28,7 +28,7 @@ public class Menu extends AppCompatActivity {
         btnNav = findViewById(R.id.bottom_navigation);
         btnNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_layout,new HomeFragment()).commit();
+                .replace(R.id.fragment_layout, new HomeFragment()).commit();
 
         BadgeDrawable badge_notifications = btnNav.getOrCreateBadge(R.id.notification);
 
@@ -39,8 +39,6 @@ public class Menu extends AppCompatActivity {
         badge_notifications.setVisible(true);
 
     }
-
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new
             BottomNavigationView.OnNavigationItemSelectedListener() {
