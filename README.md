@@ -1,6 +1,6 @@
 # **TapLock**
 ##  (last code update summer 2020)
-The idea of this project is to be able to have a remote relay device and be able to activate it from a mobile application, different users managed by different administrators could activate/deactivate the relay according to their permissions
+The idea of this project is to be able to have a remote BT relay and be able to activate/deactivate it from a mobile application. Also different users managed by different administrators could activate/deactivate the relay according to their permissions, and buy new slots on the store and hace acces to her account from differents mobile devices.
 
 * **Django API Rest** 
 * **Payment gateway (Stripe)** 
@@ -9,7 +9,8 @@ The idea of this project is to be able to have a remote relay device and be able
 #
 
 ````
-Unfortunately, while developing this project I did not use any version control system and also did not make backup 
+Unfortunately, while developing this project I did not use any version control system
+and also did not make backup 
 copies. One day the hard drive crashed and I lost 
 practically everything (this repository is part of what was
 recovered)
