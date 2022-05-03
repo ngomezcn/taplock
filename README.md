@@ -1,5 +1,5 @@
 # **TapLock**
-##  (last code update summer 2021)
+##  (last code update summer 2020)
 The idea of this project is to be able to have a remote BT relay and be able to activate/deactivate it from a mobile application. Also different users managed by different administrators could activate/deactivate the relay according to their permissions, and buy new slots on the store and hace acces to her account from differents mobile devices.
 
 * **Django API Rest** 
@@ -15,7 +15,7 @@ copies. One day the hard drive crashed and I lost
 practically everything (this repository is part of what was
 recovered)
 I decided not to continue developing it
-Lost project at summer of 2021
+Lost project at summer of 2020
 ````
 
 ### **TapLock Admin**
