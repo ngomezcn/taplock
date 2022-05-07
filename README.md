@@ -58,7 +58,6 @@ Lost project at summer of 2021
 <img src="./resources/img/27.png" width="1200" height="100%">
 <img src="./resources/img/28.png" width="1200" height="100%">
 <img src="./resources/img/29.png" width="1200" height="100%">
-<img src="./resources/img/30.png" width="1200" height="100%">
 <img src="./resources/img/32.png" width="600" height="100%">
 
 
