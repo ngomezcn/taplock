@@ -1,19 +1,18 @@
 # **TapLock**
-##  (last code update summer 2020)
-The idea of this project is to be able to have a remote BT relay and be able to activate/deactivate it from a mobile application. Also different users managed by different administrators could activate/deactivate the relay according to their permissions, and buy new slots on the store and hace acces to her account from differents mobile devices.
-
-* **Django API Rest** 
-* **Payment gateway (Stripe)** 
-* **Android Studio (Java)** 
-* **Microcontroller (ATmega328P)** 
-#
-
 ````
 While developing this project the hard drive crashed and I lost 
 practically everything (this repository is part of what was
 recovered)
 I decided not to continue developing it
 ````
+The idea of this project is to be able to have a remote BT relay and be able to activate/deactivate it from a mobile application. Also different users managed by different administrators could activate/deactivate the relay according to their permissions, and buy new slots on the store and has acces to her account from differents mobile devices.
+
+* **Django API Rest** 
+* **Payment gateway (Stripe)** 
+* **Android Studio (Java)** 
+* **Microcontroller (ATmega328P)** 
+* **Bluetooth (HC-05 or ESP32-BLE)
+#
 
 ### **TapLock Admin**
 
