@@ -11,7 +11,7 @@ The idea of this project is to be able to have a remote BT relay and be able to 
 * **Payment gateway (Stripe)** 
 * **Android Studio (Java)** 
 * **Microcontroller (ATmega328P)** 
-* **Bluetooth (HC-05 or ESP32-BLE)
+* **Bluetooth (HC-05 or ESP32-BLE)** 
 #
 
 ### **TapLock Admin**
